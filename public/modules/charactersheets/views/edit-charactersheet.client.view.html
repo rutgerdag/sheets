@@ -1,0 +1,203 @@
+<section data-ng-controller="CharactersheetsController as sheet" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Charactersheet</h1>
+
+        <h1 data-ng-bind="charactersheet.name"></h1>
+		<p data-ng-bind="charactersheet.description"></p>
+		<p data-ng-bind="charactersheet.race"></p>
+		<p data-ng-bind="charactersheet.nationality"></p>
+		</div>
+		<div class="row">
+			{{ charactersheet }}
+			</div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+	        <table border=3><tr align="top"><td>
+		        <table border=1>
+		        	<tr><th>Stat</th><th>Value</th><th>Save</th></tr>
+		    		<tr><td><b>CON: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.constitution"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.consave"></span></td></tr>
+					<tr><td><b>STR: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.strength"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.strsave"></span></td></tr>
+					<tr><td><b>DEX: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dexterity"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.dexsave"></span></td></tr>
+					<tr><td><b>AGI: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.agility"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.agisave"></span></td></tr>
+					<tr><td colspan=2><hr></td><td></td></tr>
+					<tr><td><b>TAL: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.talent"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.talsave"></span></td></tr>
+					<tr><td><b>INT: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.intelligence"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.intsave"></span></td></tr>
+					<tr><td><b>JUD: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.judgement"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.judsave"></span></td></tr>
+					<tr><td><b>WIL: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.will"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.wilsave"></span></td></tr>
+					<tr><td colspan=2><hr></td><td></td></tr>
+					<tr><td><b>ZEA: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.zeal"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.zeasave"></span></td></tr>
+					<tr><td><b>CHA: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.charisma"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.chasave"></span></td></tr>
+					<tr><td><b>APP: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.appearance"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.appsave"></span></td></tr>
+					<tr><td><b>SOC: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.socialstanding"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.socsave"></span></td></tr>
+				</table>
+			</td><td alight="top">
+				<table border=1>
+					<tr><td><b>HT:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.height"></span></td></tr>
+					<tr><td><b>SC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.sc"></span></td></tr>
+					<tr><td><b>DR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dr"></span></td></tr>
+					<tr><td><b>MR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mr"></span></td></tr>
+					<tr><td><b>HP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.hp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.hp_per_level"></span></td></tr>
+					<tr><td><b>NSP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.nsp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.nsp_per_level"></span></td></tr>
+					<tr><td><b>MI:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mi" for="name">{{ mi }}></span></td></tr>
+					<tr><td><b>PI:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.pi" for="name">{{ pi }}></span></td></tr>
+					<tr><td><b>ec:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ec" for="name">{{ ec }}></span></td></tr>
+					<tr><td><b>current Hp:</b></td><td><span class="sheetstat" data-ng-bind="currentHp" for="name">{{ currentHp }}></span></td></tr>
+					<tr><td><b>current Fp:</b></td><td><span class="sheetstat" data-ng-bind="currentFp" for="name">{{ currentFp }}></span></td></tr>
+					<tr><td><b>current Nsp:</b></td><td><span class="sheetstat" data-ng-bind="currentNsp" for="name">{{ currentNsp }}></span></td></tr>
+					<tr><td><b>current Lsp:</b></td><td><span class="sheetstat" data-ng-bind="currentLsp" for="name">{{ currentLsp }}></span></td></tr>
+				</table>
+			</td><td align="top">
+				<table border=1>
+					<tr><td><b>WT:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.weight"></span></td></tr>
+					<tr><td><b>DC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dc"></span></td></tr>
+					<tr><td><b>AR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ar"></span></td></tr>
+					<tr><td><b>RC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.rc"></span></td></tr>
+					<tr><td><b>FP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.fp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.fp_per_level"></span></td></tr>
+					<tr><td><b>LSP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.lsp"></span>/ <span class="sheetstat" data-ng-bind="charactersheet.lsp_per_level"></span></td></tr>
+					<tr><td><b>MPR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mpr" for="name">{{ mpr }}></span></td></tr>
+					<tr><td><b>PPR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ppr" for="name">{{ ppr }}></span></td></tr>
+					<tr><td>
+                            <div class="form-group">
+                                <label class="control-label" for="name">Level</label>
+                            
+                            </td>
+                            <td>
+                                <div class="controls">
+                                    <input type="number" min="1" max="36" string-to-number data-ng-model="charactersheet.level" id="leve" ng-change="increaseLevel()">
+                                </div>
+                            </div>
+                        </td></tr>
+				</table>
+			</td>
+    		<td>
+				<table border=1>
+					<tr><td><b>	Overall HP: </b></td><td><span class="sheetstat" data-ng-bind="currentHp"></span></td><td>__________________</td></tr>
+					<tr><td>AV</td><td>Location</td><td>HP</td><td>Dam</td><td>Roll</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>L Eye (03%)</td><td>{{charactersheet.l_eye}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>R Eye (03%)</td><td>{{charactersheet.r_eye}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+					<tr><td>____</td><td>Pate (15%)</td><td>{{charactersheet.pate_hp}}</td><td>______________________</td><td>(069)</td></tr>
+				</table>
+    		</td></tr></table>
+                    <hr>
+                        
+                    <div class="row">
+
+                        
+                        <div class="col-md-4">
+                            <label for="snative">Selected Native Skills</label> 
+                            <label for="snative">NSP: {{ currentNsp }} </label>
+                            <label for="snative">Total Spent: {{native_skills | totalSkillPointsSpent:'level':'skill_cost'}}</label>
+                            <label for="snative">Total Remaining: {{native_skills | totalSkillPointsRemaining:nsp:'level':'skill_cost'}}</label>
+                        </div>
+                    </div>        
+                            <div>
+                                <h3>Available Native Skills</h3>
+                                  <accordion>
+    <accordion-group ng-repeat="skillgroup in sheet.getNativeSkillGroups()|orderBy:'skillgroup'" heading="{{skillgroup}}" >
+<!--<div class="col-md-12" data-ng-model="nativeskillsarray" ng-repeat="nativeskill in (native_skills )|orderBy:'nativeskill.skill_group' |unique:'skill_group'">-->
+                                    <!--<div><h4>{{nativeskill.skill_group}} </h4></div>-->
+                                    
+                                        <div class="skills" ng-repeat="skill in (sheet.getNativeSkills(skillgroup))">
+
+                                            <div class="skills"><label for="name">{{ skill.skill }} <i>({{ skill.skill_group }})</i>{{ skill.skill_cost }}</label></div>
+                                            <div class="skills"><input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="skill.level" name="skill.level" ng-focus="startUpdatingNative(skill)" ng-change="updateNative(skill)"></div>
+                                            <div class="skills"><label for="snative">Level: {{ skill.level }}</label></div>
+                                            <div class="skills"><label for="snative">Cost: {{ skill.skill_cost }}</label></div>
+                                            <div class="skills"><label for="snative">Sum: {{ skill.level * skill.skill_cost }} <label/></div>
+                                            <div class="skills"><label for="snative">Effect: {{ effect(skill.level, skill.skill_group) }} <label/></div>
+                                        </div>
+                                    </div>
+                            <hr />
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label for="snative">Learned Skills</label> 
+                            <label for="snative">LSP: {{ currentLsp }} </label>
+                            <label for="snative">Total Spent: {{sheet.professions | totalSkillPointsSpent:'level':'skill_cost'}}</label>
+                            <label for="snative">Total Remaining: {{sheet.professions | totalSkillPointsRemaining:lsp:'level':'skill_cost'}}</label>
+                            
+                        </div>
+                    </div>    
+                    <div>
+                        <h3>Available Learned Skills</h3>
+                    </div>
+                    <div ng-repeat="profession in sheet.getProfessions() ">
+                            
+                        <div><h4>{{ profession }}</h4></div>
+                        <div><label for="snative">EC: {{ sheet.getEC(profession) }}</label></div>
+                        <div><label data-ng-model="ec_percentage" for="snative">Percentage: {{ sheet.professions|totalSpentByProfession:lsp:'level':'skill_cost':profession }}</label></div>
+                        <!--<div><input type="checkbox" checked="sheet.professions|isAClass:lsp:'level':'skill_cost':profession" data-ng-model="ec_percentage" for="snative"></input></div>-->
+                        <!--<div><label for="snative">EC: {{ sheet.professions|totalSpentByProfession:lsp:'level':'skill_cost':profession }}</label></div>-->
+                        <!--<div ng-repeat="jack in sheet.getValuesFor(profession)">-->
+                            <!--<h6>this {{jack}}</h6>-->
+  <accordion>
+    <accordion-group ng-repeat="jack in sheet.getSkillGroups(profession)" heading="{{jack}}">
+                            <div><h4>{{ jack }}</h4></div>
+                            <div class="skills" ng-repeat="jill in (sheet.getSkills(jack))">
+                                <!--<table border=1><tr>-->
+                                <!--<td>-->
+                                    <div>{{jill.skill}}</div>
+                                <!--    <div>{{jack}}</div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <div>               
+                                        <input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="jill.level" name="jill.level" ng-focus="startUpdatingLearned(jill)" ng-change="updateLearned(jill)">
+                                    </div>
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <div>        
+                                        <label for="snative">Level: {{ jill.level }}</label>
+                                    </div>
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <div>    
+                                        <label for="snative">Cost: {{ jill.skill_cost }}</label>
+                                    </div>
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <div>
+                                        <label for="snative">Sum: {{ jill.level * jill.skill_cost }} <label/>
+                                    </div>
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <div>
+                                        <label for="snative">Effect: {{ effect(jill.level, jill.skill_group) }}
+                                    </div>
+                                <!--</td>                         -->
+                                <!--</tr></table>-->
+
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    
+                </div>
+
+  </accordion-group>
+</accordion>    
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" >
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>

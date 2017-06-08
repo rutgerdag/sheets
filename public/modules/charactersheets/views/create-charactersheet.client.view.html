@@ -1,0 +1,375 @@
+<section data-ng-controller="CharactersheetsController as sheet">
+    <div class="container">
+
+        <div class="page-header">
+            <h1>New Charactersheet</h1>
+            <h2>User: {{ user.username }}</h2>
+        </div>
+        <form class="form-horizontal" data-ng-submit="sheet.create()" novalidate>
+            <fieldset>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="control-label" for="name">Name</label>
+                            <div class="controls">
+                                <input type="text"  class="stat" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="col-md-1">
+                        <div class="form-group">
+                            <label>
+                                <input type="radio" data-ng-model="race.name" value="human" ng-change=sheet.getRandomHeight(race.name)>
+                                human
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="race.name" value="dwarf" ng-change=sheet.getRandomHeight(race.name)>
+                                dwarf
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="race.name" value="elf" ng-change=sheet.getRandomHeight(race.name)>
+                                elf
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="race.name" value="hin" ng-change=sheet.getRandomHeight(race.name)>
+                                hin
+                            </label>
+                        </div>
+                    </div>   
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="karameikos" ng-change=sheet.getNationBonus(nation.name)>
+                                The Grand Duchy of Karameikos
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Empire of Thyatis" ng-change=sheet.getNationBonus(nation.name)>
+                                The Empire of Thyatis
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Northern Reaches" ng-change=sheet.getNationBonus(nation.name)>
+                                The Northern Reaches
+                            </label><br/>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Ethengar Khanate" ng-change=sheet.getNationBonus(nation.name)>
+                                The Ethengar Khanate
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Republic of Darokin" ng-change=sheet.getNationBonus(nation.name)>
+                                The Republic of Darokin
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Emirates of Ylaruam" ng-change=sheet.getNationBonus(nation.name)>
+                                The Emirates of Ylaruam
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Kingdom of Ierendi" ng-change=sheet.getNationBonus(nation.name)>
+                                The Kingdom of Ierendi
+                            </label>
+                        </div>
+                    </div>   
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Minrothad Guilds" ng-change=sheet.getNationBonus(nation.name)>
+                                The Minrothad Guilds
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Principalities of Glantri" ng-change=sheet.getNationBonus(nation.name)>
+                                The Principalities of Glantri
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Five Shires" ng-change=sheet.getNationBonus(nation.name)>
+                                The Five Shires
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Alfheim" ng-change=sheet.getNationBonus(nation.name)>
+                                Alfheim
+                            </label>
+                            <label>
+                                <input type="radio" data-ng-model="nation.name" value="Kingdom of Rockhome" ng-change=sheet.getNationBonus(nation.name)>
+                                The Kingdom of Rockhome
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        National Bonuses
+                        <ul>
+                            <li ng-repeat="nation_bonus in sheet.chosen_bonus">
+                                {{ nation_bonus.skill}}
+                                {{ nation_bonus.skill_cost}}
+                            </li>
+
+                          </ul>
+
+                    </div> 
+                </div> <!--row -->
+            
+                            <hr />
+                <!--<div class="row">-->
+
+                    <!--<div class="quarter" ng-repeat="profession in sheet.getProfessions() | unique:'name'">-->
+                    <!--    <label>-->
+                    <!--        <input type="checkbox" data-ng-model="sheet.filter[profession.name]" ng-click="addEc(profession.ec,$event)"/>-->
+                    <!--        {{ profession.name }}-->
+                    <!--    </label>-->
+                    <!--</div>-->
+                <!--            <hr />-->
+
+                <!--</div>-->
+                <div class="column">
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-default" >
+                    </div>
+    				<div data-ng-show="error" class="text-danger">
+    					<strong data-ng-bind="error"></strong>
+    				</div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="col-mid-1"><label class="control-label" for="name" data-ng-model="totalstats" name="totalstats">Total Stat Points:{{ sheet.totalstats }}</label></div>
+                            <div class="col-mid-1"><label class="control-label" for="name" data-ng-model="difference" name="difference">Remaining:{{ sheet.difference }}</label></div>
+                            <div class="col-mid-1"><label class="control-label" for="name" data-ng-model="physical">Physical: {{ sheet.physical }}</label></div>
+                            <div class="col-mid-1"><label class="control-label" for="name" data-ng-model="mental">Mental: {{ sheet.mental }}</label></div>
+                            <div class="col-mid-1"><label class="control-label" for="name" data-ng-model="social">Spiritual: {{ sheet.social }}</label></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div ng-show="sheet.isLessThan(sheet.physical)">Need at least 36 in physical</div>
+                            <div ng-show="sheet.isLessThan(sheet.mental)">Need at least 36 in mental</div>
+                            <div ng-show="sheet.isLessThan(sheet.social)">Need at least 36 in spiritual</div>
+                        </div>
+                    </div>
+                </div>
+                    
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <div vertical-align="bottom" data-ng-model="prime_stats" ng-repeat="stat in sheet.prime_stats">
+                            <div class="primestats">
+                                {{ stat.name }}:
+                            </div>
+                        </div>
+
+                    </div> 
+                    <div class="col-md-1">
+                        <div data-ng-model="prime_stats" ng-repeat="stat in sheet.prime_stats">
+                            <div class="primestats">
+                                <input type="number" class="stat" min="1" max="24" string-to-number data-ng-model="stat.value" name="stat.name" ng-focus="sheet.beginStatUpdate(stat)" ng-change="sheet.endStatUpdate(stat)"> {{ stat.save }}
+                                </div>
+                            </div>
+
+                        </div>                    
+                        
+                        
+                        <div class="col-md-1 col-md-offset-2" >
+                            <div class="secondarystats">HT:</div>
+                            <div class="secondarystats">SC:</div>
+                            <div class="secondarystats">DR:</div>
+                            <div class="secondarystats">MR:</div>
+                            <div class="secondarystats">HP:</div>
+                            <div class="secondarystats">NSP:</div>
+                            <div class="secondarystats">MI:</div>
+                            <div class="secondarystats">PI:</div>
+                            <div class="secondarystats">EC:</div>
+                        </div>
+                                                
+                        <div class="col-md-1">
+                            <div class="secondarystats"><label class="control-label" data-ng-model="height" for="name">{{ sheet.height }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="sc" for="name">{{ sheet.sc }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="dr" for="name">{{ sheet.dr }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="mr" for="name">{{ sheet.mr }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="hp" for="name">{{ sheet.hp }}/{{ sheet.hp_per_level }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="nsp" for="name">{{ sheet.nsp }}/{{sheet.nsp_per_level}}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="mi" for="name">{{ sheet.mi }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="pi" for="name">{{ sheet.pi }}</label></div>
+                            <!--<div class="secondarystats"><label class="control-label" data-ng-model="totalEc" for="name">{{ totalEc }}</label></div>-->
+                        </div>
+                        
+                        <div class="col-md-1">
+                            <div class="secondarystats">WT:</div>
+                            <div class="secondarystats">DC:</div>
+                            <div class="secondarystats">AR:</div>
+                            <div class="secondarystats">RC:</div>
+                            <div class="secondarystats">FP:</div>
+                            <div class="secondarystats">LSP:</div>
+                            <div class="secondarystats">MPR:</div>
+                            <div class="secondarystats">PPR:</div>
+                        </div>                        
+                        <div class="col-md-1">
+                            <div class="secondarystats"><label class="control-label" data-ng-model="weight" for="name">{{ sheet.weight }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="dc" for="name">{{ sheet.dc }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="ar" for="name">{{ sheet.ar }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="rc" for="name">{{ sheet.rc }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="fp" for="name">{{ sheet.fp }}/{{ sheet.fp_per_level }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="lsp" for="name">{{ sheet.lsp }}/{{ sheet.lsp_per_level }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="mpr" for="name">{{ sheet.mpr }}</label></div>
+                            <div class="secondarystats"><label class="control-label" data-ng-model="ppr" for="name">{{ sheet.ppr }}</label></div>                            
+                            <div class="secondarystats"><label class="control-label" data-ng-model="level" for="name">{{ sheet.level }}</label></div>
+                        </div>
+                        
+                        
+                        <div class="col-md-3">
+                            <table>
+                                <tr><td>Overall HP:&nbsp;{{ sheet.hp }}</td><td></td><td></td><td></td></tr>
+                                <tr><td>AV</td><td>Location</td><td>Dam</td><td>Roll</td></tr>
+                                <tr><td>______</td><td>pate(.15)</td><td>{{ sheet.pate_hp }}__________068</td></tr>
+                                <tr><td>______</td><td>L Eye(.03)</td><td>{{ sheet.l_eye }}__________070</td></tr>
+                                <tr><td>______</td><td>R Eye(.03)</td><td>{{ sheet.r_eye }}__________072</td></tr>
+                                <tr><td>______</td><td>Mouth/Jaw(.15)</td><td>{{ sheet.mouth_jaw }}__________</td></tr>
+                                <tr><td>______</td><td>Neck(.14)</td><td>{{ sheet.neck }}__________</td></tr>
+                                <tr><td>______</td><td>Throat(.05)</td><td>{{ sheet.throat }}__________</td></tr>
+                                <tr><td>______</td><td>L Hand(.07)</td><td>{{ sheet.l_hand }}__________</td></tr>
+                                <tr><td>______</td><td>LFA(.12)</td><td>{{ sheet.lfa }}__________</td></tr>
+                                <tr><td>______</td><td>LUA(.18)</td><td>{{ sheet.lua }}__________</td></tr>
+                                <tr><td>______</td><td>L Chest(.50)</td><td>{{ sheet.l_chest }}__________</td></tr>
+                                <tr><td>______</td><td>R Chest(.50)</td><td>{{ sheet.r_chest }}__________</td></tr>
+                                <tr><td>______</td><td>RUA(.18)</td><td>{{ sheet.rua }}__________</td></tr>
+                                <tr><td>______</td><td>RFA(.12)</td><td>{{ sheet.rfa }}__________</td></tr>
+                                <tr><td>______</td><td>R Hand(.07)</td><td>{{ sheet.r_hand }}__________</td></tr>
+                                <tr><td>______</td><td>Abdomen(.45)</td><td>{{ sheet.abdomen }}__________</td></tr>
+                                <tr><td>______</td><td>Groin(.35)</td><td>{{ sheet.groin }}__________</td></tr>
+                                <tr><td>______</td><td>L Thigh(.38)</td><td>{{ sheet.l_thigh }}__________</td></tr>
+                                <tr><td>______</td><td>R Thigh(.38)</td><td>{{ sheet.r_thigh }}__________</td></tr>
+                                <tr><td>______</td><td>L Calf(.26)</td><td>{{ sheet.l_calf }}__________</td></tr>
+                                <tr><td>______</td><td>R Calf(.26)</td><td>{{ sheet.r_calf }}__________</td></tr>
+                                <tr><td>______</td><td>L Foot(.10)</td><td>{{ sheet.l_foot }}__________</td></tr>
+                                <tr><td>______</td><td>R Foot(.10)</td><td>{{ sheet.r_foot }}__________</td></tr>
+                            </table>
+                        </div>
+                    </div> <!--row-->
+
+                
+                    <hr>
+                        
+                    <div class="row">
+
+                        
+                        <div class="col-md-4">
+                            <label for="snative">Selected Native Skills</label> 
+                            <label for="snative">NSP: {{ sheet.nsp }} </label>
+                            <div class="skills" ng-repeat="skill in sheet.selectedNative">
+
+                                <div class="skills"><label for="name">{{ skill.skill }} <i>({{ skill.skill_group }})</i>{{ skill.skill_cost }}</label></div>
+                                <div class="skills"><input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="skill.level" name="skill.level" ng-focus="sheet.startUpdatingNative(skill)" ng-change="sheet.updateNative(skill)"></div>
+                                <div class="skills"><label for="snative">Level: {{ skill.level }}</label></div>
+                                <div class="skills"><label for="snative">Cost: {{ skill.skill_cost }}</label></div>
+                                <div class="skills"><label for="snative">Sum: {{ skill.level * skill.skill_cost }} <label/></div>
+                                <!--<div class="skills"><label for="snative">Effect: {{ effect(skill.level, skill.skill_group) }} <label/></div>-->
+                            </div>
+                            <label for="snative">Total Spent: {{sheet.selectedNative | totalSkillPointsSpent:'level':'skill_cost'}}</label>
+                            <label for="snative">Total Remaining: {{sheet.selectedNative | totalSkillPointsRemaining:sheet.nsp:'level':'skill_cost'}}</label>
+                        </div>
+                    </div>        
+
+                    <div>
+                        <h3>Available Native Skills</h3>
+                        <select size="5" multiple ng-model="availableNative" ng-options="(n_skill.skill + ' - ' + n_skill.skill_group + '('+n_skill.skill_cost + ')') for n_skill in sheet.native_skills|orderBy:'skillgroup'" ng-dblclick="sheet.moveItem(availableNative[0], sheet.native_skills,sheet.selectedNative)" style="width: 400px"></select>  
+
+                    </div>
+
+                    <hr>
+        
+                    <div><label for="snative">Selected Learned Skills</label> </div>
+                    <div><label for="snative">LSP: {{ sheet.lsp }} </label></div>
+                    <div ng-repeat="profession in sheet.getSelectedProfessions(sheet.selectedLearned) | orderBy:skill_group ">
+                        <div>profession:{{profession}} ec:{{sheet.getEC(profession)}}</div>
+                        <div>{{sheet.getSkillGroups(profession)}}</div>
+                        <div class="skills" ng-repeat="learned_group in sheet.getSkillGroups(profession)">
+                            <div><h4>{{ learned_group }}</h4></div>
+                            <div ng-repeat="chosen_skill in (sheet.getSkills(learned_group))">
+                            <!--<div><h4>{{ chosen_skill }}</h4></div>-->
+                            <div class="col-md-6"><label for="name">{{ chosen_skill.skill }} </label></div>
+                            <div>               
+                                <input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="chosen_skill.level" name="chosen_skill.level" ng-focus="sheet.startUpdatingLearned(chosen_skill)" ng-change="sheet.updateLearned(chosen_skill)">
+                            </div>
+                            <div>        
+                                <label for="snative">Level: {{ chosen_skill.level }}</label>
+                            </div>
+                            <div> 
+                                <label for="snative">Cost: {{ chosen_skill.skill_cost }}</label>
+                            </div>
+                            <div>
+                                <label for="snative">Sum: {{ chosen_skill.level * chosen_skill.skill_cost }} <label/>
+                            </div>
+                            <div>
+                                <label for="snative">Effect: {{ effect(chosen_skill.level, chosen_skill.skill_group) }}
+                            </div>                        
+                            </div>
+                        </div>
+                    </div>
+                            <label for="snative">Total Spent: {{sheet.selectedLearned | totalSkillPointsSpent:'level':'skill_cost'}}</label>
+                            <label for="snative">Total Remaining: {{sheet.selectedLearned | totalSkillPointsRemaining:sheet.lsp:'level':'skill_cost'}}</label>
+                            <label for="snative" data-ng-model="totalProfessions">Total Professions: {{sheet.selectedLearned | totalProfessions:'name'}}</label>
+                            <label for="snative" data-ng-model="totalProfessions">Percent threshold: {{sheet.selectedLearned | figurePercentThreshold:lsp:'totalProfessions'}}</label>
+
+                                <div>
+                                    <h3>Available Learned Skills</h3>
+                                    <select size="5" multiple ng-model="availableLearned" ng-options="(l_skill.name+':'+l_skill.skill + ' - ' + l_skill.skill_group + '('+l_skill.skill_cost + ')') for l_skill in sheet.professions|orderBy:'skillgroup'" ng-dblclick="sheet.moveItem(availableLearned[0], sheet.professions,sheet.selectedLearned)" style="width: 800px"></select>  
+                                    <!--<div>{{availableLearned}}</div>-->
+                                    <!--<div>{{selectedLearned}}</div>-->
+                                </div>
+                            <div>{{sheet.selectedLearned}}</div>
+                        </div>
+                    <!--</div>    -->
+                    <!--<div>-->
+                    <!--    <h3>Available Learned Skills</h3>-->
+                    <!--</div>-->
+                    </div>
+                    
+                    
+                    
+                    <div ng-show="sheet.isFullTime(selectedLearned)"><h4>{{ sheet.selectedLearned }}</h4></div>
+                    
+                        <!--<div><input type="checkbox" checked="sheet.professions|isAClass:lsp:'level':'skill_cost':profession" data-ng-model="ec_percentage" for="snative"></input></div>-->
+                        <!--<div><label for="snative">EC: {{ selectedLearned|totalSpentByProfession:lsp:'level':'skill_cost':profession.name }}</label></div>-->
+                        <!--<div ng-repeat="jack in sheet.getValuesFor(profession)">-->
+                            <!--<h6>this {{jack}}</h6>-->
+                            
+  <!--<accordion>-->
+  <!--  <accordion-group ng-repeat="jack in sheet.getSkillGroups(profession)" heading="{{jack}}">-->
+  <!--                          <div><h4>{{ jack }}</h4></div>-->
+                            <!--<div class="skills" ng-repeat="jill in (sheet.getSkills(jack))">-->
+                                <!--<table border=1><tr>-->
+                                <!--<td>-->
+  <!--                                  <div>{{jill.skill}}</div>-->
+                                <!--    <div>{{jack}}</div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--    <div>               -->
+                                <!--        <input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="jill.level" name="jill.level" ng-focus="startUpdatingLearned(jill)" ng-change="updateLearned(jill)">-->
+                                <!--    </div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--    <div>        -->
+                                <!--        <label for="snative">Level: {{ jill.level }}</label>-->
+                                <!--    </div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--    <div>    -->
+                                <!--        <label for="snative">Cost: {{ jill.skill_cost }}</label>-->
+                                <!--    </div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--    <div>-->
+                                <!--        <label for="snative">Sum: {{ jill.level * jill.skill_cost }} <label/>-->
+                                <!--    </div>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--    <div>-->
+                                <!--        <label for="snative">Effect: {{ effect(jill.level, jill.skill_group) }}-->
+                                <!--    </div>-->
+                                <!--</td>                         -->
+                                <!--</tr></table>-->
+
+                            <!--</div>-->
+                                                    <hr />
+            </fieldset>
+        </form>
+    </div>
+
+</section>
+

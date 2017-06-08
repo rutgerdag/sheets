@@ -1,0 +1,18 @@
+<!--                                  <accordion>-->
+<!--    <accordion-group ng-repeat="skillgroup in ctrl.getNativeSkillGroups()|orderBy:'skillgroup'" heading="{{skillgroup}}" >-->
+<!--<div class="col-md-12" data-ng-model="nativeskillsarray" ng-repeat="nativeskill in (native_skills )|orderBy:'nativeskill.skill_group' |unique:'skill_group'">-->
+                                    <!--<div><h4>{{nativeskill.skill_group}} </h4></div>-->
+                                    
+<!--                                        <div class="skills" ng-repeat="skill in (ctrl.getNativeSkills(skillgroup))">-->
+
+<!--                                            <div class="skills"><label for="name">{{ skill.skill }} <i>({{ skill.skill_group }})</i>{{ skill.skill_cost }}</label></div>-->
+<!--                                            <div class="skills"><input type="number" class="stat" min="0" max="99" ngMaxlength=2 data-ng-model="skill.level" name="skill.level" ng-focus="startUpdatingNative(skill)" ng-change="updateNative(skill)"></div>-->
+<!--                                            <div class="skills"><label for="snative">Level: {{ skill.level }}</label></div>-->
+<!--                                            <div class="skills"><label for="snative">Cost: {{ skill.skill_cost }}</label></div>-->
+<!--                                            <div class="skills"><label for="snative">Sum: {{ skill.level * skill.skill_cost }} <label/></div>-->
+<!--                                            <div class="skills"><label for="snative">Effect: {{ effect(skill.level, skill.skill_group) }} <label/></div>-->
+<!--                                        </div>-->
+                    <!--                </div>-->
+                    <!--        <hr />-->
+                    <!--    </div>-->
+                    <!--</div>-->

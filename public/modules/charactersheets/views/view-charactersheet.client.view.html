@@ -1,0 +1,122 @@
+<section data-ng-controller="CharactersheetsController as sheet" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1 data-ng-bind="charactersheet.name"></h1>
+		<p data-ng-bind="charactersheet.description"></p>
+		<p data-ng-bind="charactersheet.race"></p>
+		<p data-ng-bind="charactersheet.nationality"></p>
+		</div>
+		<div class="row">
+			</div>
+		<div class="row">
+	        <table border=3><tr align="top"><td>
+		        <table border=1>
+		        	<tr><th>Stat</th><th>Value</th><th>Save</th></tr>
+		    		<tr><td><b>CON: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.constitution"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.consave"></span></td></tr>
+					<tr><td><b>STR: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.strength"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.strsave"></span></td></tr>
+					<tr><td><b>DEX: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dexterity"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.dexsave"></span></td></tr>
+					<tr><td><b>AGI: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.agility"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.agisave"></span></td></tr>
+					<tr><td colspan=2><hr></td><td></td></tr>
+					<tr><td><b>TAL: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.talent"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.talsave"></span></td></tr>
+					<tr><td><b>INT: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.intelligence"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.intsave"></span></td></tr>
+					<tr><td><b>JUD: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.judgement"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.judsave"></span></td></tr>
+					<tr><td><b>WIL: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.will"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.wilsave"></span></td></tr>
+					<tr><td colspan=2><hr></td><td></td></tr>
+					<tr><td><b>ZEA: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.zeal"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.zeasave"></span></td></tr>
+					<tr><td><b>CHA: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.charisma"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.chasave"></span></td></tr>
+					<tr><td><b>APP: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.appearance"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.appsave"></span></td></tr>
+					<tr><td><b>SOC: </b></td><td><span class="sheetstat" data-ng-bind="charactersheet.socialstanding"></span></td><td><span class="sheetstat" data-ng-bind="charactersheet.socsave"></span></td></tr>
+				</table>
+			</td><td alight="top">
+				<table border=1>
+					<tr><td><b>HT:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.height"></span></td></tr>
+					<tr><td><b>SC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.sc"></span></td></tr>
+					<tr><td><b>DR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dr"></span></td></tr>
+					<tr><td><b>MR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mr"></span></td></tr>
+					<tr><td><b>HP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.hp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.hp_per_level"></span></td></tr>
+					<tr><td><b>NSP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.nsp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.nsp_per_level"></span></td></tr>
+					<tr><td><b>MI:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mi" for="name">{{ mi }}></span></td></tr>
+					<tr><td><b>PI:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.pi" for="name">{{ pi }}></span></td></tr>
+					<tr><td><b>EC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ec" for="name">{{ ec }}></span></td></tr>
+				</table>
+			</td><td align="top">
+				<table border=1>
+					<tr><td><b>WT:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.weight"></span></td></tr>
+					<tr><td><b>DC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.dc"></span></td></tr>
+					<tr><td><b>AR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ar"></span></td></tr>
+					<tr><td><b>RC:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.rc"></span></td></tr>
+					<tr><td><b>FP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.fp"></span>/<span class="sheetstat" data-ng-bind="charactersheet.fp_per_level"></span></td></tr>
+					<tr><td><b>LSP:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.lsp"></span>/ <span class="sheetstat" data-ng-bind="charactersheet.lsp_per_level"></span></td></tr>
+					<tr><td><b>MPR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.mpr" for="name">{{ mpr }}></span></td></tr>
+					<tr><td><b>PPR:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.ppr" for="name">{{ ppr }}></span></td></tr>
+					<tr><td><b>Level:</b></td><td><span class="sheetstat" data-ng-bind="charactersheet.level" for="name">{{ level }}></span></td></tr>
+				</table>
+			</td>
+    		<td>
+                                <table>
+                                    <tr><td>Overall HP:&nbsp;{{ charactersheet.hp }}</td><td></td><td></td><td></td></tr>
+                                    <tr><td>AV</td><td>Location</td><td>Dam</td><td>Roll</td></tr>
+                                    <tr><td>______</td><td>pate(.15)</td><td>{{ charactersheet.pate_hp }}__________068</td></tr>
+                                    <tr><td>______</td><td>L Eye(.03)</td><td>{{ charactersheet.l_eye }}__________070</td></tr>
+                                    <tr><td>______</td><td>R Eye(.03)</td><td>{{ charactersheet.r_eye }}__________072</td></tr>
+                                    <tr><td>______</td><td>Mouth/Jaw(.15)</td><td>{{ charactersheet.mouth_jaw }}__________</td></tr>
+                                    <tr><td>______</td><td>Neck(.14)</td><td>{{ charactersheet.neck }}__________</td></tr>
+                                    <tr><td>______</td><td>Throat(.05)</td><td>{{ charactersheet.throat }}__________</td></tr>
+                                    <tr><td>______</td><td>L Hand(.07)</td><td>{{ charactersheet.l_hand }}__________</td></tr>
+                                    <tr><td>______</td><td>LFA(.12)</td><td>{{ charactersheet.lfa }}__________</td></tr>
+                                    <tr><td>______</td><td>LUA(.18)</td><td>{{ charactersheet.lua }}__________</td></tr>
+                                    <tr><td>______</td><td>L Chest(.50)</td><td>{{ charactersheet.l_chest }}__________</td></tr>
+                                    <tr><td>______</td><td>R Chest(.50)</td><td>{{ charactersheet.r_chest }}__________</td></tr>
+                                    <tr><td>______</td><td>RUA(.18)</td><td>{{ charactersheet.rua }}__________</td></tr>
+                                    <tr><td>______</td><td>RFA(.12)</td><td>{{ charactersheet.rfa }}__________</td></tr>
+                                    <tr><td>______</td><td>R Hand(.07)</td><td>{{ charactersheet.r_hand }}__________</td></tr>
+                                    <tr><td>______</td><td>Abdomen(.45)</td><td>{{ charactersheet.abdomen }}__________</td></tr>
+                                    <tr><td>______</td><td>Groin(.35)</td><td>{{ charactersheet.groin }}__________</td></tr>
+                                    <tr><td>______</td><td>L Thigh(.38)</td><td>{{ charactersheet.l_thigh }}__________</td></tr>
+                                    <tr><td>______</td><td>R Thigh(.38)</td><td>{{ charactersheet.r_thigh }}__________</td></tr>
+                                    <tr><td>______</td><td>L Calf(.26)</td><td>{{ charactersheet.l_calf }}__________</td></tr>
+                                    <tr><td>______</td><td>R Calf(.26)</td><td>{{ charactersheet.r_calf }}__________</td></tr>
+                                    <tr><td>______</td><td>L Foot(.10)</td><td>{{ charactersheet.l_foot }}__________</td></tr>
+                                    <tr><td>______</td><td>R Foot(.10)</td><td>{{ charactersheet.r_foot }}__________</td></tr>
+                                </table>
+    		</td></tr></table>
+		</div>
+			<hr>
+
+		<div class="row">
+			<h3>Native Skills</h3>
+			<table border=1><tr><th>Skill</th><th>Level</th><th>Cost</th><th>LSP</th></tr>
+					<tr ng-repeat="nativeskill in charactersheet.purchasednativeskills">
+						<td>{{ nativeskill.skill }}</td>
+						<td>{{ nativeskill.level }}</td>
+						<td>{{ nativeskill.skill_cost }}</td>
+						<td>{{ nativeskill.level*1 * nativeskill.skill_cost*1 }}</td>
+					</tr>	
+			</table>
+		</div>
+		<hr />
+
+		<div class="row">
+			<h3>Learned Skills</h3>
+		</div>
+		<div class="row">
+			<table border=1><tr><th>Skill</th><th>Level</th><th>Cost</th><th>LSP</th></tr>
+					<tr ng-repeat="learnedskill in charactersheet.purchasedlearnedskills">
+						<td>{{ learnedskill.skill }}</td>
+						<td>{{ learnedskill.level }}</td>
+						<td>{{ learnedskill.skill_cost }}</td>
+						<td>{{ learnedskill.level*1 * learnedskill.skill_cost*1 }}</td>
+					</tr>	
+			</table>
+		</div>
+		        <hr />
+
+	<div class="pull-right">
+		<a class="btn btn-primary" href="/#!/charactersheets/{{charactersheet._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>

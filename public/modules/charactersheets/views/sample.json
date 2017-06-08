@@ -1,0 +1,32 @@
+{
+   "assets": [
+        {
+            "deviceName": "vehicle 25",
+            "vpkDeviceID": 352964050744425,
+            "driverName": "Mike Smith"
+        },
+        {
+            "deviceName": "vehicle 52",
+            "vpkDeviceID": 352599041910352,
+            "driverName": "John Doe"
+        },
+        {
+            "deviceName": "vehicle 11",
+            "vpkDeviceID": 862170016156711,
+            "driverName": "Sarah Johnson"
+        },
+        {
+            "deviceName": "vehicle 28",
+            "vpkDeviceID": 862193020453528,
+            "driverName": "Eleanor Petit"
+        }
+    ],
+    "groups":
+        [
+            {"ID": 1, "name": "nairobi", "members": [{"vpkDeviceID": 352964050744425}, {"vpkDeviceID": 352599041910352}, {"vpkDeviceID": 862170016156711}]}, 
+            {"ID": 2, "name": "karen", "members": [{"vpkDeviceID": 352964050744425}, {"vpkDeviceID": 352599041910352}]}, 
+            {"ID": 3, "name": "langata", "members": [{"vpkDeviceID": 352599041910352}, {"vpkDeviceID": 862170016156711}, {"vpkDeviceID": 862193020453528}]},
+            {"ID": 4, "name": "downtown", "members": [{"vpkDeviceID": 352964050744425}, {"vpkDeviceID": 862170016156711}]}, 
+            {"ID": 5, "name": "westlands", "members": [{"vpkDeviceID": 862193020453528}]}
+        ]
+}

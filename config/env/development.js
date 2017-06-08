@@ -1,10 +1,14 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/northwindnode-dev',
+	//db: 'mongodb://arsfarb:hR9K3kk*h@jello.modulusmongo.net:27017/ti5byJid',
+	// db: 'mongodb://rutgerdag:hR9K3kk*h@jello.modulusmongo.net:27017/charactersheet',
+	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/charactersheet',
+	// db: 'mongodb://'
 	app: {
-		title: 'NorthwindNode - Development Environment'
+		title: 'Sheets - Development Environment'
 	},
+	//new user playa:playa
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
 		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',

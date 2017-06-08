@@ -1,0 +1,15 @@
+<section data-ng-controller="QuizzesController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="quiz.name"></h1>
+		<p data-ng-bind="quiz.question"></p>
+		<p data-ng-bind="{{quiz.effect.answer}}"></p>
+	</div>
+	<div class="pull-right">
+		<a class="btn btn-primary" href="/#!/quizzes/{{quiz._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>

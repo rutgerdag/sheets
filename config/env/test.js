@@ -1,10 +1,11 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/northwindnode-test',
+	//db: 'mongodb://arsfarb:hR9K3kk*h@jello.modulusmongo.net:27017/ti5byJid',
+	db: 'mongodb://rutgerdag:hR9K3kk*h@jello.modulusmongo.net:27017/charactersheet',
 	port: 3001,
 	app: {
-		title: 'NorthwindNode - Test Environment'
+		title: 'Charactersheet - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

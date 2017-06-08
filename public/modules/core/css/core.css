@@ -13,3 +13,143 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+/*.container {*/
+/* display:table;*/
+/*}*/
+/*.col1, .col2, .col3, .col4 {*/
+/* display:table-cell;*/
+/*}*/
+
+/* .container {*/
+/*    display: table;*/
+/*    }*/
+
+/* .row  {*/
+/*    display: table-row;*/
+/*    }*/
+/*    .left, .right, .middle {*/
+/*    display: table-cell;*/
+/*    }*/
+.stat {
+    size: 2;
+}
+.skills {
+    white-space: nowrap;
+    width: 300px;
+    height: 30px;
+    border: 1px solid black;
+    column-count:1;
+    column-span: 1;
+    -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+    -moz-column-width: 100px; /* Firefox */
+    column-width: 100px;
+}
+.profession {
+    white-space: nowrap;
+    width: 300px;
+    height: 30px;
+    column-count:1;
+    column-span: 1;
+    -webkit-column-width: 100px; /* Chrome, Safari, Opera */
+    -moz-column-width: 100px; /* Firefox */
+    column-width: 100px;
+}
+
+.primestats {
+    white-space: nowrap;
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    column-count:1;
+    column-span: 1;
+    -webkit-column-width: 50px; /* Chrome, Safari, Opera */
+    -moz-column-width: 50px; /* Firefox */
+    column-width: 50px;
+}
+
+.secondarystats {
+    white-space: nowrap;
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    column-count:1;
+    column-span: 2;
+    column-width:50px;
+    column-gap: 0px;
+    padding: 0px;
+}
+
+.sheetstat{
+    white-space: nowrap;
+    /*text-indent: 10%;*/
+    font-size:small;
+    
+}
+
+.myDIV {
+    width: 110px;
+    height: 300px;
+    border: 1px solid black;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+}
+
+.quarter {
+  display: inline-block;
+  min-width: 25%;
+}
+
+/*form {*/
+/*    width: 100%;*/
+/*    float: left;*/
+/*}*/
+/* Style the text boxes */
+/*input, textarea {*/
+/*    width:90%;*/
+/*    height:27px;*/
+/*    background:#efefef;*/
+/*    border:1px solid #dedede;*/
+/*    padding:10px;*/
+/*}*/
+/*html, body, div, span, applet, object, iframe,*/
+/*h1, h2, h3, h4, h5, h6, p, blockquote, pre,*/
+/*a, abbr, acronym, address, big, cite, code,*/
+/*del, dfn, em, img, ins, kbd, q, s, samp,*/
+/*small, strike, strong, sub, sup, tt, var,*/
+/*b, u, i, center,*/
+/*dl, dt, dd, ol, ul, li,*/
+/*fieldset, form, label, legend,*/
+/*table, caption, tbody, tfoot, thead, tr, th, td,*/
+/*article, aside, canvas, details, embed, */
+/*figure, figcaption, footer, header, hgroup, */
+/*menu, nav, output, ruby, section, summary,*/
+/*time, mark, audio, video {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    border: 0;*/
+/*    vertical-align: baseline;*/
+/*}*/
+/* HTML5 display-role reset for older browsers */
+/*article, aside, details, figcaption, figure, */
+/*footer, header, hgroup, menu, nav, section {*/
+/*    display: block;*/
+/*}*/
+/*body {*/
+/*    line-height: 1;*/
+/*}*/
+/*ol, ul {*/
+/*    list-style: none;*/
+/*}*/
+/*blockquote, q {*/
+/*    quotes: none;*/
+/*}*/
+/*blockquote:before, blockquote:after,*/
+/*q:before, q:after {*/
+/*    content: '';*/
+/*    content: none;*/
+/*}*/
+/*table {*/
+/*    border-collapse: collapse;*/
+/*    border-spacing: 0;*/
+/*}*/
